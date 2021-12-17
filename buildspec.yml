@@ -9,7 +9,7 @@ phases:
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       - REPOSITORY_URI=140606167936.dkr.ecr.us-east-1.amazonaws.com/flight
-      - IMAGE_TAG=$(echo release-$CODEBUILD_RESOLVED_SOURCE_VERSION)
+      - IMAGE_TAG=$(echo release-$CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-10)
   build:
     commands:
       - echo Build started on `date`
