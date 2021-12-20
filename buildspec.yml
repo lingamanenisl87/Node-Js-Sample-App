@@ -8,7 +8,7 @@ phases:
       - env
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=140606167936.dkr.ecr.us-east-1.amazonaws.com/region
+      - REPOSITORY_URI=140606167936.dkr.ecr.us-east-1.amazonaws.com/codepipe
       - IMAGE_TAG=$(echo release-$CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-10)
   build:
     commands:
@@ -23,7 +23,7 @@ phases:
       # docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"todaycontainer","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"Container1","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - cat imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
