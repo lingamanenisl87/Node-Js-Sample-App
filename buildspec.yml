@@ -8,7 +8,7 @@ phases:
       - env
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=738983729377.dkr.ecr.us-east-2.amazonaws.com/laughing
+      - REPOSITORY_URI=500778048607.dkr.ecr.us-west-1.amazonaws.com/nodejsapp
       - IMAGE_TAG=$(echo release-$CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-10)
   build:
     commands:
